@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12-Month AI Engineer Roadmap — Node.js to Production AI</title>
+<meta name="description" content="A complete 52-week roadmap to become a production AI Engineer. 25 phases, 20+ projects, from Node.js backend dev to AI systems architect.">
+<meta property="og:title" content="12-Month AI Engineer Roadmap">
+<meta property="og:description" content="52 weeks · 25 phases · 20+ projects · Node.js → Production AI Engineer">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg2: #f8f8f7;
+    --bg3: #f1f0ec;
+    --text: #1a1a1a;
+    --text2: #6b6b6b;
+    --text3: #9a9a9a;
+    --border: rgba(0,0,0,0.1);
+    --border2: rgba(0,0,0,0.18);
+    --radius: 10px;
+    --radius-sm: 7px;
+    --accent: #5B4CF5;
+    --accent-bg: #EEEDFE;
+    --accent-text: #3C3489;
+    --green-bg: #EAF3DE;
+    --green-text: #27500A;
+    --amber-bg: #FAEEDA;
+    --amber-text: #633806;
+    --teal-bg: #E1F5EE;
+    --teal-text: #085041;
+    --pink-bg: #FBEAF0;
+    --pink-text: #72243E;
+    --coral-bg: #FAECE7;
+    --coral-text: #712B13;
+    --blue-bg: #E6F1FB;
+    --blue-text: #0C447C;
+    --red-bg: #FCEBEB;
+    --red-text: #791F1F;
+    --aws: #FF9900;
+    --aws-bg: #FFF3E0;
+    --aws-text: #b45309;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a;
+      --bg2: #242422;
+      --bg3: #2c2c2a;
+      --text: #f0ede8;
+      --text2: #a0a09a;
+      --text3: #6a6a64;
+      --border: rgba(255,255,255,0.1);
+      --border2: rgba(255,255,255,0.2);
+      --accent: #7B6CF8;
+      --accent-bg: #26215C;
+      --accent-text: #CECBF6;
+      --green-bg: #173404;
+      --green-text: #C0DD97;
+      --amber-bg: #412402;
+      --amber-text: #FAC775;
+      --teal-bg: #04342C;
+      --teal-text: #9FE1CB;
+      --pink-bg: #4B1528;
+      --pink-text: #F4C0D1;
+      --coral-bg: #4A1B0C;
+      --coral-text: #F5C4B3;
+      --blue-bg: #042C53;
+      --blue-text: #B5D4F4;
+      --red-bg: #501313;
+      --red-text: #F7C1C1;
+      --aws-bg: #3a2000;
+      --aws-text: #FAC775;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg3);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .header-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    color: var(--text2);
+    white-space: nowrap;
+  }
+  .badge.accent { background: var(--accent-bg); color: var(--accent-text); border-color: transparent; }
+  .gh-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--text);
+    color: var(--bg);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity .15s;
+  }
+  .gh-btn:hover { opacity: .8; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2rem 3rem;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .75rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: .75rem;
+    max-width: 700px;
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text2);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .stat {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: .6rem 1rem;
+    text-align: center;
+    min-width: 90px;
+  }
+  .stat-val {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text2);
+    margin-top: 3px;
+    white-space: nowrap;
+  }
+
+  /* ── NAV TABS ── */
+  .tab-bar {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    position: sticky;
+    top: 56px;
+    z-index: 90;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+  }
+  .tab {
+    padding: .875rem 1.25rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text2);
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color .15s, border-color .15s;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ── SECTION HEADER ── */
+  .sec-header { margin-bottom: 1.5rem; }
+  .sec-header h2 { font-size: 20px; font-weight: 700; color: var(--text); }
+  .sec-header p { font-size: 14px; color: var(--text2); margin-top: 4px; }
+
+  /* ── PHASE GRID ── */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+  }
+  .phase-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color .15s, box-shadow .15s;
+    cursor: pointer;
+  }
+  .phase-card:hover { border-color: var(--border2); }
+  .phase-card.open { border-color: var(--accent); }
+  .phase-card-top {
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .phase-num {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .phase-info { flex: 1; min-width: 0; }
+  .phase-title { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.35; }
+  .phase-meta { font-size: 12px; color: var(--text3); margin-top: 2px; }
+  .score-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; padding: 0 1.25rem 1rem; }
+  .score-pill {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text2);
+  }
+  .score-pill b { color: var(--text); font-weight: 600; }
+  .chevron {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text3);
+    transition: transform .2s;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .phase-card.open .chevron { transform: rotate(180deg); }
+  .phase-detail {
+    display: none;
+    padding: 0 1.25rem 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .phase-card.open .phase-detail { display: block; }
+  .detail-block { margin-top: 1rem; }
+  .detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 6px;
+  }
+  .detail-list { list-style: none; }
+  .detail-list li {
+    font-size: 13px;
+    color: var(--text);
+    padding: 3px 0 3px 14px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .detail-list li::before { content: "·"; position: absolute; left: 0; color: var(--text3); font-size: 16px; line-height: 1.2; }
+  .why-box {
+    background: var(--bg2);
+    border-radius: var(--radius-sm);
+    padding: .75rem 1rem;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.55;
+    border-left: 3px solid var(--accent);
+  }
+  .arch-box {
+    background: var(--bg3);
+    border-radius: var(--radius-sm);
+    padding: .875rem 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.65;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .project-box {
+    background: var(--accent-bg);
+    border-radius: var(--radius-sm);
+    padding: .75rem 1rem;
+    font-size: 13px;
+    color: var(--accent-text);
+    line-height: 1.5;
+  }
+  .deliverable-box {
+    background: var(--green-bg);
+    border-radius: var(--radius-sm);
+    padding: .5rem .875rem;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-text);
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+  .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--bg3);
+    color: var(--text2);
+    border: 1px solid var(--border);
+  }
+  .tag.aws { background: var(--aws-bg); color: var(--aws-text); border-color: transparent; }
+
+  /* ── WEEKLY ── */
+  .month-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.25rem;
+  }
+  .mf-btn {
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--bg);
+    color: var(--text2);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .mf-btn:hover { border-color: var(--border2); color: var(--text); }
+  .mf-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .week-list { display: grid; gap: 8px; }
+  .week-row {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: .875rem 1.25rem;
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+  .wk-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text3);
+  }
+  .wk-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.35; }
+  .wk-del { font-size: 12px; color: var(--text2); margin-top: 3px; }
+  .wk-phase {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--bg3);
+    color: var(--text3);
+    white-space: nowrap;
+    font-weight: 500;
+    border: 1px solid var(--border);
+  }
+
+  /* ── PROJECTS ── */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 12px;
+  }
+  .proj-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: border-color .15s;
+  }
+  .proj-card:hover { border-color: var(--border2); }
+  .proj-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+  .proj-n {
+    width: 28px;
+    height: 28px;
+    background: var(--accent-bg);
+    color: var(--accent-text);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .proj-name { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.35; }
+  .proj-phase { font-size: 11px; color: var(--text3); margin-top: 2px; }
+  .proj-desc { font-size: 13px; color: var(--text2); line-height: 1.55; margin-bottom: 10px; }
+
+  /* ── CHECKLIST ── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px;
+  }
+  .check-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: .75rem 1rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: border-color .15s;
+    user-select: none;
+  }
+  .check-item:hover { border-color: var(--border2); }
+  .check-item.checked { border-color: #22c55e; background: #f0fdf4; }
+  @media (prefers-color-scheme: dark) {
+    .check-item.checked { background: #052e16; border-color: #16a34a; }
+  }
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border2);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: all .15s;
+  }
+  .check-item.checked .check-box { background: #22c55e; border-color: #22c55e; color: white; }
+  .check-text { font-size: 13px; color: var(--text); line-height: 1.4; }
+  .check-cat { font-size: 11px; color: var(--text3); margin-top: 2px; }
+  .check-progress {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .prog-bar-wrap { flex: 1; min-width: 200px; }
+  .prog-label { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+  .prog-bar { height: 8px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+  .prog-fill { height: 100%; background: #22c55e; border-radius: 4px; transition: width .3s; }
+  .prog-count { font-size: 22px; font-weight: 700; color: var(--text); white-space: nowrap; }
+
+  /* ── INTERVIEW ── */
+  .interview-section { margin-bottom: 2rem; }
+  .interview-level {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: .875rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .interview-level::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .interview-qa { margin-bottom: 10px; }
+  .iq { 
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    padding: .75rem 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    transition: background .15s;
+  }
+  .iq:hover { background: var(--bg2); }
+  .ia {
+    font-size: 13px;
+    color: var(--text2);
+    padding: .75rem 1rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    line-height: 1.55;
+    display: none;
+  }
+  .ia.open { display: block; }
+  .iq-chevron { font-size: 12px; color: var(--text3); transition: transform .2s; flex-shrink: 0; }
+  .iq.open .iq-chevron { transform: rotate(180deg); }
+
+  /* ── PORTFOLIO ── */
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 12px;
+  }
+  .card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: .5rem; }
+  .card p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .card ul { margin-top: .5rem; }
+  .card ul li { font-size: 13px; color: var(--text2); padding: 2px 0 2px 14px; position: relative; }
+  .card ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 3px; }
+
+  /* ── CAREER ── */
+  .career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .career-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .career-track { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text3); margin-bottom: 4px; }
+  .career-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+  .career-desc { font-size: 13px; color: var(--text2); line-height: 1.55; margin-bottom: 1rem; }
+  .career-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .career-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--bg3);
+    color: var(--text2);
+    border: 1px solid var(--border);
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px;
+    color: var(--text3);
+    background: var(--bg);
+  }
+  .site-footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── UTILS ── */
+  @media (max-width: 640px) {
+    .main { padding: 1rem; }
+    .hero { padding: 2rem 1rem; }
+    .site-header, .tab-bar { padding: 0 1rem; }
+    .phase-grid, .proj-grid, .check-grid, .career-grid { grid-template-columns: 1fr; }
+    .week-row { grid-template-columns: 44px 1fr; }
+    .wk-phase { display: none; }
+    .header-meta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">AI</div>
+      AI Engineer Roadmap
+    </a>
+    <div class="header-meta">
+      <span class="badge accent">Node.js → Production AI</span>
+      <span class="badge">52 weeks</span>
+      <span class="badge">25 phases</span>
+    </div>
+    <a href="https://github.com/YOUR_USERNAME/ai-engineer-roadmap" class="gh-btn" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      Star on GitHub
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Open Source · Self-Paced · Production-Focused</div>
+    <h1>12-Month AI Engineer Roadmap</h1>
+    <p class="hero-sub">From Node.js Backend Developer to Production AI Engineer. 2 hours a day, 70% practical, 25 phases covering every skill the industry demands in 2025–2026.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-val">25</div><div class="stat-label">Phases</div></div>
+      <div class="stat"><div class="stat-val">52</div><div class="stat-label">Weeks</div></div>
+      <div class="stat"><div class="stat-val">20+</div><div class="stat-label">Projects</div></div>
+      <div class="stat"><div class="stat-val">2h</div><div class="stat-label">Per day</div></div>
+      <div class="stat"><div class="stat-val">70%</div><div class="stat-label">Practical</div></div>
+      <div class="stat"><div class="stat-val">Free</div><div class="stat-label">Forever</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TABS -->
+<nav class="tab-bar" role="tablist" aria-label="Roadmap sections">
+  <div class="tab-inner">
+    <button class="tab active" onclick="switchTab('phases',this)" role="tab">All Phases</button>
+    <button class="tab" onclick="switchTab('weekly',this)" role="tab">Weekly Plan</button>
+    <button class="tab" onclick="switchTab('projects',this)" role="tab">Projects</button>
+    <button class="tab" onclick="switchTab('checklist',this)" role="tab">Skill Checklist</button>
+    <button class="tab" onclick="switchTab('interview',this)" role="tab">Interview Prep</button>
+    <button class="tab" onclick="switchTab('portfolio',this)" role="tab">Portfolio & GitHub</button>
+    <button class="tab" onclick="switchTab('career',this)" role="tab">Career Paths</button>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ─── PHASES VIEW ─── -->
+  <div id="view-phases" class="view active">
+    <div class="sec-header">
+      <h2>25-Phase Learning Roadmap</h2>
+      <p>Click any phase to expand full details — topics, exercises, projects, AWS services, and interview questions.</p>
+    </div>
+    <div class="phase-grid" id="phase-grid"></div>
+  </div>
+
+  <!-- ─── WEEKLY VIEW ─── -->
+  <div id="view-weekly" class="view">
+    <div class="sec-header">
+      <h2>52-Week Plan</h2>
+      <p>Every week: what to learn, what to build, and what to deliver. Filter by month below.</p>
+    </div>
+    <div class="month-filter" id="month-filter"></div>
+    <div class="week-list" id="week-list"></div>
+  </div>
+
+  <!-- ─── PROJECTS VIEW ─── -->
+  <div id="view-projects" class="view">
+    <div class="sec-header">
+      <h2>20+ Portfolio Projects</h2>
+      <p>Every project is production-grade and GitHub-ready. Build them in order — each one unlocks the next.</p>
+    </div>
+    <div class="proj-grid" id="proj-grid"></div>
+  </div>
+
+  <!-- ─── CHECKLIST VIEW ─── -->
+  <div id="view-checklist" class="view">
+    <div class="sec-header">
+      <h2>2026 AI Engineer Skill Checklist</h2>
+      <p>Check off skills as you complete them. Progress is saved in your browser.</p>
+    </div>
+    <div class="check-progress">
+      <div class="prog-bar-wrap">
+        <div class="prog-label" id="prog-label">0 of 39 skills complete</div>
+        <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+      </div>
+      <div class="prog-count" id="prog-count">0%</div>
+      <button onclick="resetChecklist()" style="font-size:12px;color:var(--text3);background:none;border:none;cursor:pointer;padding:4px 8px">Reset</button>
+    </div>
+    <div class="check-grid" id="check-grid"></div>
+  </div>
+
+  <!-- ─── INTERVIEW VIEW ─── -->
+  <div id="view-interview" class="view">
+    <div class="sec-header">
+      <h2>AI Engineer Interview Prep</h2>
+      <p>Real questions at every level with answer frameworks. Click a question to reveal the approach.</p>
+    </div>
+    <div id="interview-content"></div>
+  </div>
+
+  <!-- ─── PORTFOLIO VIEW ─── -->
+  <div id="view-portfolio" class="view">
+    <div class="sec-header">
+      <h2>Portfolio & GitHub Roadmap</h2>
+      <p>How to structure your GitHub profile and portfolio site for maximum impact with recruiters and clients.</p>
+    </div>
+    <div id="portfolio-content"></div>
+  </div>
+
+  <!-- ─── CAREER VIEW ─── -->
+  <div id="view-career" class="view">
+    <div class="sec-header">
+      <h2>Career Paths</h2>
+      <p>Three parallel tracks you can pursue — all starting from Month 6 onwards.</p>
+    </div>
+    <div id="career-content"></div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Open source · MIT License · Built for the community</p>
+  <p style="margin-top:4px">⭐ <a href="https://github.com/YOUR_USERNAME/ai-engineer-roadmap" target="_blank" rel="noopener">Star on GitHub</a> · Share with someone learning AI engineering</p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════
+
+const PHASES = [
+  {
+    id:1, title:"Software Foundations for AI", weeks:"1–2", prereq:"Node.js, REST APIs, Docker",
+    importance:8, demand:7, difficulty:4,
+    colors:["#E6F1FB","#0C447C"],
+    why:"You already know Node.js, but AI systems need async streaming patterns, environment management, and retry logic that differ from typical backend work. This phase closes that gap before you touch any AI library.",
+    topics:["Async/await deep dive & Promise.all patterns","Environment management (.env, dotenv, config validation)","Stream processing for LLM token streams","SSE (Server-Sent Events) for streaming AI responses","Docker for AI app containerization","Error handling & retry with exponential backoff","Rate limiting & token-bucket patterns","AWS Secrets Manager for API key management"],
+    exercises:["Build an SSE streaming server in Node.js","Create a retry wrapper with exponential backoff","Implement a token-bucket rate limiter from scratch","Build a config management system with env validation"],
+    project:"AI-Ready Backend Scaffold — A Node.js service with streaming support, rate limiting, retry logic, and config management. Reused in every future project.",
+    deliverable:"GitHub repo: ai-backend-scaffold with full README",
+    aws:["AWS Lambda (Node.js 20 runtime)","API Gateway with streaming","AWS Secrets Manager"],
+    interview:["How do you handle streaming responses from LLM APIs in Node.js?","Explain exponential backoff and when you'd use it.","How do you prevent API key leakage in production?"],
+    mistakes:["Hardcoding API keys in source code","Not handling stream errors — silent failures","Ignoring rate limits and burning API budget on day 1"]
+  },
+  {
+    id:2, title:"Python for AI Engineers", weeks:"3–5", prereq:"Phase 1",
+    importance:9, demand:10, difficulty:5,
+    colors:["#EAF3DE","#27500A"],
+    why:"90% of AI/ML libraries are Python-first. You need enough Python to read documentation, run scripts, and use AI libraries. You don't need to become a Python expert — just productive.",
+    topics:["Python fundamentals for JavaScript developers","Virtual environments (venv, uv, conda)","NumPy for array and matrix operations","Pandas for data manipulation","FastAPI for AI microservices","Pydantic for data validation and schemas","Python async (asyncio) patterns","Jupyter notebooks for prototyping","pip, requirements.txt, pyproject.toml"],
+    exercises:["Port your Node.js retry wrapper to Python","Build a FastAPI endpoint wrapping an OpenAI call","Manipulate a CSV dataset with Pandas","Create a Jupyter notebook analyzing token usage patterns"],
+    project:"Python AI Microservice — FastAPI service mirroring your Node.js scaffold: streaming, retries, Pydantic validation, Docker.",
+    deliverable:"GitHub repo: python-ai-microservice with Docker setup",
+    aws:["AWS Lambda with Python 3.12 runtime","AWS SAM for local Lambda testing","Amazon SageMaker Notebooks"],
+    interview:["When would you use Python vs Node.js for AI applications?","What is Pydantic and why does it matter for AI APIs?","Explain Python's GIL and how it affects AI workloads."],
+    mistakes:["Trying to master all of Python before touching AI","Not using virtual environments — dependency hell","Ignoring type hints (they're critical in production AI code)"]
+  },
+  {
+    id:3, title:"Machine Learning Fundamentals", weeks:"6–8", prereq:"Phase 2",
+    importance:7, demand:8, difficulty:6,
+    colors:["#FAEEDA","#633806"],
+    why:"You need just enough ML to understand what LLMs are doing, how they're trained, and why certain techniques work. Conceptual understanding only — you won't train models, but you'll know the vocabulary every AI job description uses.",
+    topics:["Supervised vs unsupervised vs reinforcement learning","Training, validation, and test splits — why they matter","Overfitting and underfitting — intuition only","Transformer architecture — attention mechanism intuition","Tokenization: BPE, WordPiece, and vocabulary","Pre-training vs fine-tuning conceptual model","Model evaluation metrics: accuracy, F1, precision, recall","HuggingFace ecosystem overview","Token cost estimation from model architecture"],
+    exercises:["Run a pre-trained HuggingFace classifier in 10 lines","Visualize attention weights on a sentence","Tokenize text and count tokens for cost estimation","Build a token cost calculator for GPT-4o and Claude"],
+    project:"ML Concept Explorer — Interactive Jupyter notebook explaining transformers visually. Published as your first blog post.",
+    deliverable:"Blog post published + Jupyter notebook on GitHub",
+    aws:["Amazon SageMaker (concepts only)","AWS AI/ML service landscape overview"],
+    interview:["Explain the transformer architecture in plain English.","What is the difference between GPT and BERT?","Why does tokenization matter for cost optimization?"],
+    mistakes:["Getting stuck in deep ML math before building anything","Trying to understand every detail of backpropagation","Confusing pre-training with fine-tuning"]
+  },
+  {
+    id:4, title:"LLM Fundamentals", weeks:"9–11", prereq:"Phase 3",
+    importance:10, demand:10, difficulty:5,
+    colors:["#EEEDFE","#3C3489"],
+    why:"Before building AI apps, you need to deeply understand how LLMs behave: temperature, context windows, token limits, hallucinations, and API patterns. This knowledge determines whether your AI app survives production.",
+    topics:["Context window mechanics and hard limits","Temperature, top-p, top-k — what they do","Chat completions API: system, user, assistant roles","Token counting and cost estimation before every call","Hallucination — causes and mitigation patterns","Multi-provider patterns: OpenAI, Claude, Gemini","Rate limits: TPM, RPM, handling 429 errors","Streaming API implementation end-to-end","Model selection: when to use which model","Latency vs cost vs quality triangle"],
+    exercises:["Call OpenAI, Claude, and Gemini with the same prompt","Build a parameter tuning playground (sliders for temperature)","Implement token counting before every API call","Measure and log latency across providers","Deliberately trigger and document hallucination patterns"],
+    project:"LLM Playground API — Unified wrapper over multiple LLM providers with token counting, cost tracking, latency logging, and parameter control. Published as npm + pip package.",
+    deliverable:"GitHub: llm-playground-api — published to npm",
+    aws:["Amazon Bedrock basics and model catalog","Bedrock InvokeModel API overview"],
+    interview:["How does temperature affect LLM output quality?","What causes hallucinations and how do you reduce them?","How do you estimate LLM feature cost before building it?"],
+    mistakes:["Ignoring token limits until you hit them in production","Not tracking costs from day one","Using high temperature for production features"],
+    arch:"User Request\n    ↓\nProvider Router\n  ├── OpenAI (GPT-4o)\n  ├── Anthropic (Claude)\n  └── Google (Gemini)\n    ↓\nToken Counter → Cost Tracker\n    ↓\nLatency Logger\n    ↓\nStreaming Response"
+  },
+  {
+    id:5, title:"Prompt Engineering", weeks:"12–14", prereq:"Phase 4",
+    importance:10, demand:10, difficulty:5,
+    colors:["#FBEAF0","#72243E"],
+    why:"Prompt engineering is the #1 practical AI skill. A well-engineered prompt can make a cheap model outperform an expensive one. This directly impacts cost, quality, and reliability of every AI feature you build.",
+    topics:["Zero-shot, few-shot, many-shot prompting","Chain of thought (CoT) and self-consistency","ReAct pattern: Reason + Act","Role prompting and persona patterns","Structured output prompting (JSON, XML)","Negative prompting and guardrails in prompts","Prompt chaining and sequential prompts","Prompt versioning with git-style diffs","System prompt design for production bots","Context stuffing vs retrieval patterns"],
+    exercises:["Solve 5 problems with zero-shot vs few-shot — compare quality","Implement CoT on a reasoning task and measure improvement","Build a prompt versioning system","Create a prompt test suite with expected output checks","A/B test two prompts on 50 test cases"],
+    project:"Prompt Engineering Toolkit — System for versioning, testing, and evaluating prompts with A/B testing built in. Includes 10 production-ready templates.",
+    deliverable:"GitHub: prompt-engineering-toolkit — CLI + library",
+    aws:["Bedrock prompt management","AWS Parameter Store for prompt versioning"],
+    interview:["Walk me through engineering a prompt for a customer support bot.","How do you test whether a new prompt is better than the old one?","When would you use few-shot vs fine-tuning?"],
+    mistakes:["Not version-controlling prompts","'It felt better' is not a metric — test everything","Leaking system prompts to users"],
+    arch:"User Request\n    ↓\nPrompt Builder\n  ├── System Template (versioned)\n  ├── Few-shot Examples\n  └── User Input sanitized\n    ↓\nLLM API\n    ↓\nOutput Validator\n    ↓\nLogged Response + Cost"
+  },
+  {
+    id:6, title:"Embeddings & Vector Databases", weeks:"15–17", prereq:"Phase 5",
+    importance:10, demand:10, difficulty:7,
+    colors:["#E1F5EE","#085041"],
+    why:"Embeddings are the foundation of semantic search, RAG, and recommendations. You cannot build a production RAG system without understanding how vectors work. This is where the required math lives — kept practical.",
+    topics:["What embeddings are — a practical mental model","Vector dimensions and what they encode","Cosine similarity vs dot product vs Euclidean distance","Embedding models: text-embedding-3-small, Cohere, BGE","Chunking strategies: fixed, semantic, recursive, parent-child","Metadata filtering and payload design","HNSW index intuition — why it's fast","Vector DB comparison: Pinecone vs Weaviate vs pgvector vs Chroma","Hybrid search: BM25 + semantic vector","Namespace and collection design patterns"],
+    exercises:["Embed 1000 documents and visualize with UMAP","Implement cosine similarity from scratch in Python","Compare chunking strategies on retrieval quality","Build a semantic dedup tool for documents","Benchmark 3 vector DBs on the same dataset"],
+    project:"Semantic Search Engine — Production document search with hybrid retrieval, metadata filtering, reranking, and a REST API using pgvector on PostgreSQL.",
+    deliverable:"GitHub: semantic-search-engine — deployed on AWS",
+    aws:["Amazon OpenSearch Service (vector search)","RDS PostgreSQL with pgvector extension","Amazon Titan Embeddings (Bedrock)"],
+    interview:["Explain cosine similarity without math jargon.","How do you choose chunk size for RAG?","Why is HNSW faster than brute-force search?","What is hybrid search and when would you use it?"],
+    mistakes:["Fixed-size chunking without testing retrieval quality","Not storing metadata with embeddings","Ignoring embedding model version drift"],
+    math:"Cosine Similarity:\n  sim(A,B) = (A·B) / (|A| × |B|)\n\n  1.0  = identical meaning\n  0.0  = unrelated\n -1.0  = opposite meaning\n\ntext-embedding-3-small = 1536 dimensions\nEach dimension = one learned semantic feature"
+  },
+  {
+    id:7, title:"RAG Systems", weeks:"18–20", prereq:"Phase 6",
+    importance:10, demand:10, difficulty:7,
+    colors:["#EEEDFE","#3C3489"],
+    why:"RAG is the most deployed AI pattern in production today. Every enterprise AI feature uses some form of RAG. This is the most commercially valuable skill in the entire roadmap.",
+    topics:["Naive RAG and its limitations","Advanced RAG: query rewriting, HyDE, step-back prompting","Hybrid retrieval pipeline design","Reranking with cross-encoders (Cohere Rerank, BGE)","Multi-index RAG for different document types","Parent-child document chunking","Self-RAG: model decides when to retrieve","Corrective RAG (CRAG) pattern","RAG evaluation with RAGAS framework","Context window management in RAG responses"],
+    exercises:["Build naive RAG in 50 lines of Python","Add query rewriting and measure retrieval improvement","Implement reranking and compare top-k results","Build a RAGAS eval harness on your RAG system","Profile and optimize RAG pipeline latency"],
+    project:"Production RAG System — Complete document Q&A over a real corpus with evaluation dashboard, latency monitoring, and cost tracking.",
+    deliverable:"GitHub: production-rag-system — full deployment guide",
+    aws:["Amazon Bedrock Knowledge Bases","Amazon OpenSearch for vector retrieval","AWS Lambda for RAG API endpoint","CloudWatch for latency/cost monitoring"],
+    interview:["What is the difference between naive RAG and advanced RAG?","How would you evaluate a RAG system?","When would you use RAG vs fine-tuning?","Explain HyDE and when you'd use it."],
+    mistakes:["Not evaluating retrieval separately from generation","Stuffing too much context into the LLM","No citation tracking in responses"],
+    arch:"Query\n  ↓\nQuery Rewriter (LLM)\n  ↓\nHybrid Retriever\n  ├── BM25 (keyword)\n  └── Semantic (vector)\n  ↓\nReranker (cross-encoder)\n  ↓\nContext Builder (parent-child)\n  ↓\nLLM Generator\n  ↓\nAnswer + Citations"
+  },
+  {
+    id:8, title:"LangChain & LlamaIndex", weeks:"21–23", prereq:"Phase 7",
+    importance:8, demand:9, difficulty:6,
+    colors:["#FAECE7","#712B13"],
+    why:"These are the two dominant AI application frameworks. Every AI job posting mentions at least one. LangChain excels at agent workflows. LlamaIndex excels at data ingestion and RAG pipelines.",
+    topics:["LangChain LCEL (LangChain Expression Language)","LangChain chains, runnables, composability patterns","LangChain memory types: buffer, summary, vector","LangSmith for production tracing and debugging","LlamaIndex data connectors and ingestion pipelines","LlamaIndex query engines and response synthesizers","When to use LangChain vs LlamaIndex vs raw API","Streaming with both frameworks","Testing LangChain/LlamaIndex applications","Framework overhead benchmarking"],
+    exercises:["Rebuild your RAG system with LangChain LCEL","Rebuild with LlamaIndex — compare ergonomics","Set up LangSmith tracing and debug a failing chain","Build a chat-with-memory endpoint using LangChain","Profile framework overhead vs raw API calls"],
+    project:"AI Framework Layer — Thin abstraction over both frameworks with LangSmith tracing, error handling, and benchmarks showing framework overhead.",
+    deliverable:"GitHub: ai-framework-layer — with benchmarks",
+    aws:["Bedrock with LangChain integration","AWS integration for LlamaIndex document loaders"],
+    interview:["When would you NOT use LangChain?","Explain LCEL and why it matters.","How do you debug a LangChain chain in production?"],
+    mistakes:["Using LangChain for simple single-call features","Framework version conflicts breaking production","Not using LangSmith — debugging without traces is guesswork"]
+  },
+  {
+    id:9, title:"AI Agents", weeks:"24–26", prereq:"Phase 8",
+    importance:9, demand:10, difficulty:8,
+    colors:["#E1F5EE","#085041"],
+    why:"Agents are the next generation of AI applications. Rather than single prompt-response cycles, agents plan, use tools, and complete multi-step tasks autonomously. This is where the industry is moving fastest.",
+    topics:["ReAct agent pattern: Thought → Action → Observation","Tool definition and the tool calling specification","Planning patterns: Plan-and-execute, MRKL","Agent memory: short-term (scratchpad) vs long-term (vector)","Stopping conditions and max iteration limits","Agent evaluation and reliability patterns","Human-in-the-loop approval gates","Error recovery and retry in agents","Agent observability with OpenTelemetry","Tool design best practices"],
+    exercises:["Build a ReAct agent with 5 tools from scratch (no frameworks)","Create a research agent: web search + summarization","Implement human-in-the-loop for irreversible actions","Build an agent that writes, runs, and tests code","Add full OpenTelemetry tracing to an agent"],
+    project:"Autonomous Research Agent — Takes a research question, searches the web, reads papers, and produces a structured report. Full observability, human approval gates, and cost limits.",
+    deliverable:"GitHub: autonomous-research-agent — deployed",
+    aws:["AWS Lambda for tool execution sandbox","DynamoDB for agent state persistence","Step Functions for complex agent orchestration","Bedrock Agents for managed agent runtime"],
+    interview:["How do you prevent an agent from running forever?","What is the ReAct pattern and why does it work?","How do you make agents reliable enough for production?"],
+    mistakes:["No iteration limit — agents can loop infinitely","No observability — impossible to debug production failures","Giving agents too many tools — causes decision paralysis"],
+    arch:"User Goal\n  ↓\nAgent Controller\n  ├── Thought (LLM reasons)\n  ├── Action Selection\n  │   ├── Web Search Tool\n  │   ├── Code Executor\n  │   ├── File Reader\n  │   └── API Caller\n  └── Observation (result)\n  ↓ (loop until done or max)\nFinal Answer + Trace"
+  },
+  {
+    id:10, title:"Multi-Agent Systems", weeks:"27–28", prereq:"Phase 9",
+    importance:8, demand:9, difficulty:9,
+    colors:["#FAEEDA","#633806"],
+    why:"Complex tasks requiring specialization need multiple agents collaborating. Multi-agent systems are how you build AI that does things a single agent cannot — like end-to-end software development pipelines.",
+    topics:["Orchestrator-worker pattern","Parallel vs sequential agent execution","Agent communication: shared memory vs message passing","Conflict resolution between agents","LangGraph for stateful multi-agent workflows","CrewAI framework for role-based agents","AutoGen patterns for conversational agents","Reliability and error propagation in pipelines","Cost management across multi-agent runs","Supervisor agent patterns"],
+    exercises:["Build a 3-agent pipeline: researcher + writer + reviewer","Implement parallel web research with 5 simultaneous agents","Add a supervisor agent that can restart failed workers","Build a software dev team: planner + coder + tester"],
+    project:"AI Software Dev Team — Multi-agent system that takes a feature spec and produces working, tested code. Agents: PM planner, developer, code reviewer, QA tester.",
+    deliverable:"GitHub: ai-dev-team — with real example outputs",
+    aws:["AWS Step Functions for complex orchestration","SQS for async agent message passing","DynamoDB for shared agent state"],
+    interview:["When would you use multi-agent vs single agent?","How do you handle partial failure in a multi-agent system?","Explain the orchestrator-worker pattern with an example."],
+    mistakes:["No retry logic when a sub-agent fails","Shared mutable state causing race conditions","Multi-agent systems compound costs — budget before building"]
+  },
+  {
+    id:11, title:"MCP Servers", weeks:"29–30", prereq:"Phase 10",
+    importance:9, demand:9, difficulty:6,
+    colors:["#EEEDFE","#3C3489"],
+    why:"Model Context Protocol (MCP) is Anthropic's open standard for connecting AI models to tools and data sources. It is rapidly becoming the standard way to extend LLM capabilities across all providers (2025+).",
+    topics:["MCP protocol specification and primitives","MCP server architecture: resources, tools, prompts","Building an MCP server in Node.js","Building an MCP server in Python","MCP client integration patterns","Authentication and security in MCP servers","MCP with Claude Desktop for local development","MCP hosting patterns on AWS","Testing MCP servers end-to-end","MCP vs function calling — when to use each"],
+    exercises:["Build a database MCP server exposing SQL query tool","Build an MCP server for your internal APIs","Create a filesystem MCP server with access controls","Add OAuth authentication to an MCP server","Test your MCP server with Claude Desktop locally"],
+    project:"Production MCP Server — Fully authenticated MCP server exposing your vector database, file storage, and internal APIs to any MCP-compatible LLM client.",
+    deliverable:"GitHub: production-mcp-server — published to npm",
+    aws:["AWS Lambda for serverless MCP hosting","API Gateway for MCP HTTP endpoints","Cognito for MCP authentication"],
+    interview:["What is MCP and why was it created?","How does MCP differ from function calling?","What are the three primitives in MCP (resources, tools, prompts)?"],
+    mistakes:["No authentication on MCP servers — public exposure","Too broad an API surface — principle of least privilege","Not rate-limiting tool calls in MCP servers"]
+  },
+  {
+    id:12, title:"Structured Outputs & Tool Calling", weeks:"31–32", prereq:"Phase 11",
+    importance:9, demand:9, difficulty:5,
+    colors:["#FAECE7","#712B13"],
+    why:"Getting reliable, parseable output from LLMs is essential for production systems. Structured outputs + tool calling are how you make LLMs play nicely with the rest of your software stack.",
+    topics:["OpenAI Structured Outputs (JSON Schema enforcement)","Anthropic tool use / function calling API","Zod + Pydantic schema definitions for LLM output","JSON mode vs structured outputs — key differences","Parallel tool calls for efficiency","Tool call streaming patterns","Validation and error recovery on malformed outputs","Instructor library for reliable structured extraction","Output schema design best practices","Automatic retry on schema validation failure"],
+    exercises:["Extract structured data from 100 messy documents","Build a tool-calling chain that modifies a database","Implement parallel tool calls and merge results","Use Instructor library with 5 different schemas","Build an output validator with automatic retry logic"],
+    project:"AI Data Extraction Pipeline — Extracts structured data from PDFs, emails, and HTML into a database with 95%+ accuracy. Includes validation, human review queue, and confidence scoring.",
+    deliverable:"GitHub: ai-data-extraction-pipeline",
+    aws:["Amazon Textract for document pre-processing","EventBridge for async pipeline orchestration","S3 for document storage and result storage"],
+    interview:["How do you guarantee a LLM returns valid JSON?","When would you use tool calling vs structured output mode?","How do you handle cases where the LLM returns invalid schema?"],
+    mistakes:["No validation on structured outputs — crashes downstream systems","Schema too complex for the model to follow reliably","Not logging schema failures — can't improve what you don't measure"]
+  },
+  {
+    id:13, title:"Evaluation Frameworks", weeks:"33–34", prereq:"Phase 12",
+    importance:9, demand:8, difficulty:7,
+    colors:["#EAF3DE","#27500A"],
+    why:"You cannot improve what you don't measure. Production AI systems require systematic evaluation — not vibe checks. This is the skill that separates AI engineers from AI tinkerers.",
+    topics:["LLM evaluation fundamentals: what to measure and why","RAGAS framework: faithfulness, answer relevance, context precision","LangSmith evaluation datasets and experiments","Braintrust evaluation platform","Evals as code — writing eval tests alongside app code","G-Eval and reference-free evaluation techniques","Human evaluation design and annotation guidelines","Golden dataset creation and maintenance","Evaluation-driven development workflow","Cost vs quality tradeoff measurement"],
+    exercises:["Create a 100-example golden dataset for your RAG system","Run RAGAS evaluation on your production RAG","Build an automated eval pipeline triggered on every prompt change","Compare 3 models on the same eval set","Build a regression test suite for AI quality over time"],
+    project:"AI Evaluation Dashboard — Automated evals on every code/prompt change, quality tracking over time, and regression alerts. Integrated with GitHub Actions CI.",
+    deliverable:"GitHub: ai-eval-dashboard — with CI/CD integration",
+    aws:["CloudWatch custom metrics for eval scores","S3 for eval dataset storage and versioning","Lambda for serverless eval runner"],
+    interview:["How do you evaluate an AI feature without ground truth?","What is RAGAS and what does it measure?","How do you build a regression test suite for LLM quality?"],
+    mistakes:["Evaluating on training data — 100% score on garbage output","Relying only on human eval — too slow and expensive to scale","No baseline — you can't know if you actually improved"]
+  },
+  {
+    id:14, title:"AI Testing", weeks:"35–36", prereq:"Phase 13",
+    importance:8, demand:8, difficulty:7,
+    colors:["#FBEAF0","#72243E"],
+    why:"AI systems need a different testing philosophy. Outputs are probabilistic — you test distributions and behaviors, not exact outputs. This requires new patterns beyond traditional unit and integration testing.",
+    topics:["Unit testing LLM applications with mocked calls","Property-based testing for AI outputs","Behavioral testing: does the model do what you want?","Red-teaming and adversarial prompt testing","Prompt injection testing systematically","Load testing AI endpoints with Locust","Contract testing for LLM API wrappers","Test data management and dataset versioning","CI/CD pipeline design for AI applications","Flaky test patterns in AI and how to avoid them"],
+    exercises:["Set up pytest with mocked LLM calls (deterministic tests)","Build a red-team suite with 20 adversarial prompts","Implement load testing on your RAG API with Locust","Create a contract test for your LLM API wrapper","Build a full CI pipeline with eval quality gates"],
+    project:"AI Testing Framework — Complete testing toolkit: mocked unit tests, behavioral tests, adversarial prompt tests, load tests, and CI/CD integration. Reusable across all projects.",
+    deliverable:"GitHub: ai-testing-framework — open-source toolkit",
+    aws:["CodePipeline for AI CI/CD pipelines","CodeBuild for running eval tests at scale","CloudWatch for test result monitoring and trending"],
+    interview:["How do you unit test a feature that calls an LLM?","What is prompt injection and how do you test for it?","How do you load test an AI endpoint reliably?"],
+    mistakes:["Testing AI like regular code with exact output matching","No adversarial testing before production launch","Slow test suites that developers skip — kill CI velocity"]
+  },
+  {
+    id:15, title:"AWS Bedrock", weeks:"37–38", prereq:"Phase 14",
+    importance:9, demand:9, difficulty:6,
+    colors:["#FFF3E0","#b45309"],
+    why:"AWS Bedrock is the enterprise standard for deploying LLMs. It gives you access to Claude, Llama, Titan, and Mistral with enterprise security, compliance, and no data retention by default.",
+    topics:["Bedrock API: InvokeModel vs Converse API","Bedrock model catalog: Claude, Llama 3, Titan, Mistral","Bedrock Knowledge Bases (managed RAG service)","Bedrock Agents (managed agent runtime)","Bedrock Guardrails for content filtering","Provisioned throughput vs on-demand pricing","Bedrock model evaluation built-in","Cross-region inference for latency + HA","Bedrock logging to CloudWatch","Cost optimization strategies on Bedrock"],
+    exercises:["Port your LLM wrapper to Bedrock Converse API","Build a RAG system using Bedrock Knowledge Bases","Add Bedrock Guardrails for harmful content filtering","Set up cross-region failover for high availability","Build a cost dashboard for all Bedrock usage"],
+    project:"Enterprise AI Backend — Production Bedrock deployment with multi-model support, guardrails, knowledge bases, cost monitoring, and automatic fallback logic.",
+    deliverable:"GitHub: enterprise-ai-backend — with full AWS CDK setup",
+    aws:["AWS Bedrock (primary)","CloudWatch Logs for Bedrock logging","IAM policies for Bedrock least-privilege","S3 for Knowledge Base document storage","VPC endpoints for private Bedrock access"],
+    interview:["What is the difference between on-demand and provisioned throughput on Bedrock?","How do Bedrock Guardrails work technically?","How do you set up private Bedrock access inside a VPC?"],
+    mistakes:["Using on-demand for high-volume production (cost spike)","No VPC endpoint — data traverses public internet","Not setting resource-based IAM policies on Bedrock"]
+  },
+  {
+    id:16, title:"OpenAI APIs — Deep Dive", weeks:"39", prereq:"Phase 15",
+    importance:9, demand:10, difficulty:5,
+    colors:["#E6F1FB","#0C447C"],
+    why:"OpenAI has the most widely used AI APIs. Deep knowledge of their full capability set, pricing model, and production gotchas is required for any AI engineering role.",
+    topics:["GPT-4o, o1, o3 — capability differences and pricing","Assistants API and Threads for stateful conversations","Fine-tuning API workflow end-to-end","DALL-E for image generation","Whisper for speech transcription","TTS (text-to-speech) API","Batch API for async 50%-cheaper processing","Embeddings API (text-embedding-3-small and large)","OpenAI Evals API","Usage policies, safety, and content moderation"],
+    exercises:["Build a voice assistant using Whisper + TTS + GPT-4o","Use Batch API to process 10,000 documents at half price","Fine-tune GPT-4o-mini on a custom classification task","Build an Assistants API chatbot with file search tool"],
+    project:"OpenAI Integration Suite — Complete integration library covering GPT, Assistants, DALL-E, Whisper, TTS, and Batch API with per-call cost tracking.",
+    deliverable:"npm package: openai-integration-suite",
+    aws:["API Gateway caching for repeated OpenAI calls","ElastiCache to cache frequent prompt results","SQS for Batch API job queuing"],
+    interview:["When would you use Assistants API vs raw chat completions?","What is the Batch API and when is it worth using?","How do you decide between fine-tuning and RAG for a new feature?"],
+    mistakes:["Using Assistants API for simple single-turn calls (overhead)","Fine-tuning on fewer than 100 examples","Not using Batch API for offline processing — 50% cheaper"]
+  },
+  {
+    id:17, title:"Claude APIs — Deep Dive", weeks:"40", prereq:"Phase 15",
+    importance:9, demand:9, difficulty:5,
+    colors:["#EEEDFE","#3C3489"],
+    why:"Anthropic's Claude models excel at reasoning, instruction following, and code generation. The 200K context window and extended thinking features unlock use cases impossible with other models.",
+    topics:["Claude model family: Haiku, Sonnet, Opus — when to use each","200K context window — real use cases and limits","Extended thinking (claude-3-7-sonnet) for hard reasoning","Tool use / function calling in Claude","Prompt caching — up to 90% cost reduction","Claude system prompts and best practices","Content policy, safety, and refusal handling","Claude for code (top SWE-bench performance)","Multi-turn conversation state management","Anthropic Messages API vs Bedrock"],
+    exercises:["Use prompt caching on a large document Q&A — measure savings","Test extended thinking on complex math/reasoning tasks","Compare Claude vs GPT-4o on your RAGAS eval set","Build a code review bot using Claude Sonnet","Use 200K context for full codebase analysis"],
+    project:"Claude-Powered Code Review Bot — GitHub App that reviews PRs using Claude Sonnet with extended thinking and prompt caching for repo context.",
+    deliverable:"GitHub App: claude-code-review-bot",
+    aws:["Bedrock Claude integration (all Claude models)","Lambda for GitHub webhook event processing"],
+    interview:["When would you choose Claude over GPT-4o?","What is prompt caching and exactly how much does it save?","Explain Claude's extended thinking feature and when to use it."],
+    mistakes:["Not using prompt caching on repeated system prompts — free savings","Sending 200K tokens when 10K would suffice (cost)","Not testing both models on your specific task before deciding"]
+  },
+  {
+    id:18, title:"Local LLMs", weeks:"41", prereq:"Phase 17",
+    importance:7, demand:8, difficulty:6,
+    colors:["#EAF3DE","#27500A"],
+    why:"Not all data can go to cloud APIs. HIPAA, GDPR, and enterprise security requirements often mandate on-premise AI. Local LLMs also eliminate API costs for high-volume workloads.",
+    topics:["Ollama for easy local model serving","llama.cpp and GGUF model format","Model quantization: Q4_K_M, Q8_0, FP16 — quality tradeoffs","vLLM for high-throughput production serving","OpenAI-compatible local API for easy swapping","Model selection: Llama 3.1, Mistral, Phi-3, Gemma 2","Hardware requirements and GPU memory math","Docker-based model serving for reproducibility","Local embedding models (nomic-embed, BGE)","When to use local vs cloud — decision framework"],
+    exercises:["Run Llama 3.1 locally with Ollama in under 5 minutes","Benchmark local vs cloud: latency, throughput, quality, cost","Serve a local model with vLLM on Docker with an API","Build a fully local RAG system: Ollama + pgvector","Test Q4 vs Q8 quantization quality degradation"],
+    project:"Local AI Stack — Docker Compose setup running Llama 3.1, an embedding model, and pgvector. Fully air-gapped, swap-compatible with cloud APIs via env var.",
+    deliverable:"GitHub: local-ai-stack — Docker Compose with README",
+    aws:["EC2 G5 instances for GPU-accelerated local serving","ECS for containerized local model serving at scale","AWS Outposts for truly on-premise AWS infrastructure"],
+    interview:["When would you recommend a local LLM over a cloud API?","What is model quantization and what are the quality tradeoffs?","How do you serve a local LLM for multiple concurrent users?"],
+    mistakes:["Running Q4 quantized models for high-stakes accuracy tasks","No load testing — local models have strict concurrency limits","Forgetting hardware costs — a consumer GPU can't handle production traffic"]
+  },
+  {
+    id:19, title:"Fine-Tuning", weeks:"42–43", prereq:"Phase 18",
+    importance:7, demand:8, difficulty:8,
+    colors:["#FAEEDA","#633806"],
+    why:"Fine-tuning creates models that consistently follow your specific format, style, or domain requirements. It's the right choice when prompt engineering and RAG have both hit their limits.",
+    topics:["When to fine-tune vs RAG vs prompting — decision framework","Fine-tuning data preparation: format, quantity, quality guidelines","OpenAI fine-tuning API (GPT-4o-mini) end-to-end","LoRA and QLoRA for efficient fine-tuning","HuggingFace Trainer and PEFT library","Parameter Efficient Fine-Tuning concepts","Evaluating fine-tuned models vs base models","Fine-tuning for classification vs generation tasks","Dataset curation and quality filtering","Catastrophic forgetting and how to mitigate it"],
+    exercises:["Fine-tune GPT-4o-mini on a custom classification task","Use QLoRA to fine-tune Llama 3 on a 16GB GPU","Build an automated training data pipeline from raw examples","Evaluate fine-tuned model on held-out test set","Compare fine-tuned vs few-shot: quality, cost, latency"],
+    project:"Domain-Specific Fine-Tuned Model — Fine-tune a model for a specific domain (legal, medical, code, support). Includes data pipeline, training, evaluation, and HuggingFace model card.",
+    deliverable:"GitHub: domain-finetune-pipeline + HuggingFace model card",
+    aws:["SageMaker Training Jobs for fine-tuning at scale","S3 for training dataset storage","EC2 P3/P4 instances for GPU training workloads"],
+    interview:["How do you decide if fine-tuning is worth it?","What is LoRA and why is it more practical than full fine-tuning?","How much training data do you actually need to fine-tune?"],
+    mistakes:["Fine-tuning on messy data — garbage in, garbage out","No evaluation before deploying fine-tuned model to production","Fine-tuning when prompt engineering with few-shot would suffice"]
+  },
+  {
+    id:20, title:"Knowledge Graphs", weeks:"44", prereq:"Phase 7",
+    importance:7, demand:7, difficulty:7,
+    colors:["#E6F1FB","#0C447C"],
+    why:"Knowledge graphs add structured relational reasoning to AI systems. When your RAG system needs to answer multi-hop questions about how entities relate, knowledge graphs are the answer. GraphRAG is an emerging production pattern.",
+    topics:["Graph data model: nodes, edges, properties","Neo4j basics for AI engineers (Cypher query language)","GraphRAG pattern — combining graph + vector retrieval","Entity extraction with LLMs at scale","Relation extraction from unstructured text","Knowledge graph construction pipeline","Multi-hop query patterns","When KG adds value vs plain vector RAG","Amazon Neptune managed graph service","KG + Vector DB hybrid architecture"],
+    exercises:["Extract entities and relations from 100 documents with LLM","Build a knowledge graph in Neo4j from extracted data","Implement GraphRAG on top of your existing RAG system","Compare GraphRAG vs naive RAG on multi-hop questions"],
+    project:"Knowledge Graph RAG — AI system combining vector search with graph traversal to answer complex multi-hop questions about a document corpus.",
+    deliverable:"GitHub: knowledge-graph-rag",
+    aws:["Amazon Neptune for managed graph database","Lambda for KG query API endpoint"],
+    interview:["When would you use GraphRAG over standard RAG?","What is a multi-hop question and why is it hard for RAG?","How do you extract entities and relations at scale?"],
+    mistakes:["Building a KG when flat RAG works fine — unnecessary complexity","Manual graph construction — always automate extraction","Neo4j schema design is harder than it looks — plan upfront"]
+  },
+  {
+    id:21, title:"AI Security", weeks:"45", prereq:"Phase 19",
+    importance:9, demand:9, difficulty:7,
+    colors:["#FCEBEB","#791F1F"],
+    why:"AI systems introduce entirely new attack surfaces: prompt injection, jailbreaks, data poisoning, and model exfiltration. Security is non-negotiable in production AI systems.",
+    topics:["Prompt injection attacks: direct and indirect","Jailbreaking techniques and systematic defenses","Data poisoning in RAG document stores","Model inversion and data leakage patterns","OWASP Top 10 for LLM Applications (2025)","Output sanitization before rendering in UI","Guardrails implementation patterns","PII detection and redaction in pipelines","Secure system prompt design against extraction","Rate limiting, abuse detection, and anomaly detection"],
+    exercises:["Run 20 prompt injection attacks on your agent — document results","Build a prompt injection classifier","Implement PII redaction before all LLM calls","Audit your RAG system for data leakage","Add rate limiting and abuse detection to your AI API"],
+    project:"AI Security Audit Toolkit — Automated security tests against any LLM application: prompt injection, jailbreaks, PII leakage, and rate limit bypass. Open source.",
+    deliverable:"GitHub: ai-security-toolkit — open source",
+    aws:["Bedrock Guardrails for content filtering","WAF rules for AI API protection","Macie for PII detection in S3 data stores","CloudTrail for complete AI API audit logs"],
+    interview:["What is prompt injection and how do you defend against it?","How do you prevent users from extracting your system prompt?","What is the OWASP Top 10 for LLM Applications?"],
+    mistakes:["Assuming LLMs are safe by default — they are not","Not sanitizing LLM outputs before HTML rendering (XSS via LLM)","Putting raw PII in prompts without redaction"]
+  },
+  {
+    id:22, title:"AI Observability", weeks:"46", prereq:"Phase 21",
+    importance:9, demand:8, difficulty:6,
+    colors:["#E1F5EE","#085041"],
+    why:"You cannot debug, optimize, or improve an AI system you cannot see. Observability transforms an AI prototype into a production system you can actually manage and improve over time.",
+    topics:["OpenTelemetry instrumentation for AI applications","LangSmith production tracing and debugging","Helicone and Arize AI for LLM monitoring","Prompt and response logging patterns (with PII scrubbing)","Cost monitoring and spend alerting","Latency P50/P95/P99 tracking per endpoint","Quality degradation detection in production","Token usage dashboards across all LLM calls","Alerting on hallucination rate spikes","A/B testing framework for model comparison"],
+    exercises:["Add OpenTelemetry tracing to your RAG system","Build a cost alert that fires when daily spend exceeds threshold","Create a latency dashboard in CloudWatch","Set up LangSmith for all production LLM calls","Build a quality degradation detector from user feedback signals"],
+    project:"AI Observability Stack — Complete monitoring, logging, and alerting for all AI applications. Tracks cost, latency, quality, and errors. Includes Terraform IaC.",
+    deliverable:"GitHub: ai-observability-stack — with Terraform",
+    aws:["CloudWatch for custom AI metrics and logs","X-Ray for distributed request tracing","SNS for cost and quality alerting","Managed Grafana for dashboards"],
+    interview:["What metrics do you track for a production LLM API?","How do you detect quality degradation without user complaints?","What is the difference between logging and observability for AI?"],
+    mistakes:["Logging only errors — you need success calls for cost analysis","No alerting — discovering cost spikes after the bill arrives","Not correlating user feedback signals with model responses"]
+  },
+  {
+    id:23, title:"Production AI Systems", weeks:"47–48", prereq:"Phase 22",
+    importance:10, demand:10, difficulty:9,
+    colors:["#FAEEDA","#633806"],
+    why:"All previous phases build toward this. Production AI systems require everything working together: caching, scaling, reliability, cost optimization, and continuous improvement loops. This is the capstone engineering phase.",
+    topics:["Semantic caching with Redis to eliminate redundant LLM calls","Auto-scaling AI workloads on AWS ECS","Multi-region deployment for AI APIs","Fallback and circuit breaker patterns for LLM providers","Model routing: cheap model for simple queries, expensive for hard","Async AI processing with SQS queues","Streaming at scale with proper backpressure","Database optimization for AI workloads","Feature flagging for safe model rollouts","Incident response playbooks for AI systems"],
+    exercises:["Implement semantic caching with Redis — measure cache hit rate","Build model routing based on query complexity scoring","Set up ECS auto-scaling for your AI API","Implement circuit breaker for LLM provider outages","Run chaos engineering: kill your primary LLM provider"],
+    project:"Production AI Platform — Fully production-ready AI backend: semantic caching, model routing, circuit breakers, auto-scaling, monitoring, and CI/CD. Full Terraform IaC.",
+    deliverable:"GitHub: production-ai-platform — full IaC with Terraform",
+    aws:["ECS Fargate for scalable AI API hosting","ElastiCache Redis for semantic caching","SQS for async AI job processing","Route53 + ALB for multi-region routing","CDK/Terraform for complete infrastructure as code"],
+    interview:["How do you design an AI system handling 1000 requests/second?","What is semantic caching and how much does it actually save?","How do you implement a circuit breaker for an LLM provider?"],
+    mistakes:["No caching — paying full price for identical queries","Single provider dependency — one outage kills your product","No capacity planning — autoscaling helps but doesn't replace planning"],
+    arch:"User\n  ↓\nAPI Gateway (rate limit + auth)\n  ↓\nSemantic Cache (Redis)\n  ├── HIT  → return cached response\n  └── MISS ↓\nModel Router\n  ├── Simple  → Haiku / GPT-4o-mini\n  └── Complex → Sonnet / GPT-4o\n  ↓\nCircuit Breaker\n  ├── PRIMARY: AWS Bedrock\n  └── FALLBACK: OpenAI Direct\n  ↓\nResponse + Full Observability"
+  },
+  {
+    id:24, title:"AI System Design", weeks:"49–50", prereq:"Phase 23",
+    importance:9, demand:9, difficulty:8,
+    colors:["#EEEDFE","#3C3489"],
+    why:"System design interviews are how senior AI engineering roles are won. This phase teaches you to design any AI system from scratch: what to ask, what to build, how to scale it, and what tradeoffs to make.",
+    topics:["AI system design framework: requirements → architecture → scaling","Capacity estimation for LLM workloads (token math)","Design patterns: RAG, agents, pipelines, streaming","Data flywheel — how AI systems improve over time","Build vs buy decisions for AI components","Cost architecture for AI at scale","Multi-tenant AI system design","Latency vs cost vs quality triangle decisions","AI system design interview templates","Case studies: ChatGPT, Perplexity, GitHub Copilot, NotionAI"],
+    exercises:["Design a ChatGPT-like system supporting 1M daily users","Design a real-time code completion backend","Design a document intelligence platform","Design a multi-modal product search system","Do mock system design interviews with a peer"],
+    project:"AI System Design Portfolio — 5 detailed design documents for real-world AI systems with architecture diagrams, capacity estimates, and technology justifications.",
+    deliverable:"GitHub: ai-system-design-portfolio — interview ready",
+    aws:["Full AWS architecture diagrams for each design","AWS Well-Architected Framework for AI workloads"],
+    interview:["Design a customer support AI system for 10M monthly users.","How would you build a real-time document summarization API?","Design an AI-powered code completion system like Copilot."],
+    mistakes:["Jumping to implementation before clarifying requirements","Ignoring cost in system design — always estimate","Not considering data privacy and compliance in AI architecture"]
+  },
+  {
+    id:25, title:"Capstone Projects", weeks:"51–52", prereq:"All phases",
+    importance:10, demand:10, difficulty:9,
+    colors:["#E1F5EE","#085041"],
+    why:"The final phase is demonstrating mastery. These projects combine everything into portfolio-worthy, production-grade AI systems you can demo to employers, clients, and investors.",
+    topics:["End-to-end AI product development","Full-stack AI application architecture","Production deployment with full monitoring","User experience design for AI features","Technical writing and architecture documentation","Demo preparation and presentation skills","Open source contribution strategy","Technical blog writing for credibility building"],
+    exercises:["Build and deploy Capstone Project 1","Build and deploy Capstone Project 2","Write 3 technical blog posts about what you built","Record a 3-minute demo video for each project","Contribute a PR to an open source AI project"],
+    project:"Choose 2: (1) AI SaaS product with billing + multi-tenant. (2) Open-source AI tool the community needs. (3) AI agent platform for a specific domain. (4) Domain AI specialist for a high-value vertical.",
+    deliverable:"2 deployed live apps + portfolio site + updated resume",
+    aws:["All AWS services — full production deployment","Well-Architected review on both capstone apps","Cost optimization audit — target <$50/month at zero scale"],
+    interview:["Walk me through the most complex AI system you've built.","What was the hardest production problem you encountered?","How do you stay current with fast-moving AI developments?"],
+    mistakes:["Building toy demos instead of production-grade apps","No deployed URL — GitHub repos alone are not enough","Underselling your work — explain every engineering decision you made"]
+  }
+];
+
+const WEEKS_DATA = [
+  {w:1,title:"Async patterns, SSE streaming in Node.js",phase:"P1",del:"SSE streaming server"},
+  {w:2,title:"Docker, retry logic, rate limiting, Secrets Manager",phase:"P1",del:"ai-backend-scaffold on GitHub"},
+  {w:3,title:"Python crash course for JavaScript developers",phase:"P2",del:"Python equivalents of your Node.js tools"},
+  {w:4,title:"NumPy, Pandas, FastAPI microservice",phase:"P2",del:"FastAPI LLM wrapper running"},
+  {w:5,title:"Python async, virtual envs, Docker, deploy",phase:"P2",del:"python-ai-microservice on GitHub"},
+  {w:6,title:"Transformer architecture, tokenization concepts",phase:"P3",del:"Token cost calculator"},
+  {w:7,title:"HuggingFace basics, load and run classifiers",phase:"P3",del:"Classifier running locally in < 10 lines"},
+  {w:8,title:"ML Concept Explorer notebook + blog post",phase:"P3",del:"Blog post #1 published"},
+  {w:9,title:"LLM API basics: OpenAI, Claude, and Gemini",phase:"P4",del:"Multi-provider LLM wrapper"},
+  {w:10,title:"Temperature, top-p, context windows, streaming",phase:"P4",del:"Parameter playground API"},
+  {w:11,title:"Cost tracking, rate limits, token counting",phase:"P4",del:"llm-playground-api on npm"},
+  {w:12,title:"Zero-shot, few-shot, chain-of-thought prompting",phase:"P5",del:"Prompt comparison experiments documented"},
+  {w:13,title:"Prompt versioning, A/B testing, test suites",phase:"P5",del:"Prompt A/B test framework"},
+  {w:14,title:"Production prompt patterns, guardrails, system prompts",phase:"P5",del:"prompt-engineering-toolkit CLI on GitHub"},
+  {w:15,title:"Embeddings theory, cosine similarity, models",phase:"P6",del:"Document embedder + similarity search"},
+  {w:16,title:"Vector DBs: pgvector, Pinecone, Chroma benchmark",phase:"P6",del:"Vector DB benchmark report"},
+  {w:17,title:"Chunking strategies, hybrid search, metadata",phase:"P6",del:"semantic-search-engine deployed on AWS"},
+  {w:18,title:"Naive RAG from scratch in 50 lines of Python",phase:"P7",del:"Working naive RAG"},
+  {w:19,title:"Advanced RAG: query rewriting, HyDE, reranking",phase:"P7",del:"Advanced RAG pipeline running"},
+  {w:20,title:"RAG evaluation with RAGAS, eval dashboard",phase:"P7",del:"production-rag-system on GitHub + RAGAS score"},
+  {w:21,title:"LangChain LCEL, chains, runnables",phase:"P8",del:"RAG rebuilt with LangChain LCEL"},
+  {w:22,title:"LlamaIndex ingestion, query engines, synthesizers",phase:"P8",del:"RAG rebuilt with LlamaIndex"},
+  {w:23,title:"LangSmith tracing, debugging, benchmarks",phase:"P8",del:"ai-framework-layer with benchmark results"},
+  {w:24,title:"ReAct agent from scratch, no frameworks",phase:"P9",del:"Agent with 5 custom tools"},
+  {w:25,title:"Agent tools: web, code executor, file, API",phase:"P9",del:"Research agent running end-to-end"},
+  {w:26,title:"Agent observability, human-in-the-loop, limits",phase:"P9",del:"autonomous-research-agent deployed"},
+  {w:27,title:"Multi-agent orchestrator-worker pattern",phase:"P10",del:"3-agent pipeline: researcher + writer + reviewer"},
+  {w:28,title:"LangGraph stateful workflows, AI dev team",phase:"P10",del:"ai-dev-team on GitHub with example outputs"},
+  {w:29,title:"MCP protocol spec, Node.js MCP server",phase:"P11",del:"Database MCP server running"},
+  {w:30,title:"MCP auth, testing, AWS hosting, Claude Desktop",phase:"P11",del:"production-mcp-server published to npm"},
+  {w:31,title:"Structured outputs, Instructor library, Zod schemas",phase:"P12",del:"Document extraction pipeline"},
+  {w:32,title:"Parallel tool calls, streaming, retry on validation fail",phase:"P12",del:"ai-data-extraction-pipeline on GitHub"},
+  {w:33,title:"RAGAS deep dive, golden datasets, LangSmith evals",phase:"P13",del:"Golden dataset + RAGAS baseline score"},
+  {w:34,title:"Eval as code, CI integration, regression alerts",phase:"P13",del:"ai-eval-dashboard with GitHub Actions"},
+  {w:35,title:"LLM unit testing, mocking, behavioral tests",phase:"P14",del:"Full test suite for RAG system"},
+  {w:36,title:"Red-teaming, load testing with Locust, CI/CD",phase:"P14",del:"ai-testing-framework open-sourced"},
+  {w:37,title:"Bedrock API, Converse API, model catalog",phase:"P15",del:"LLM wrapper ported to Bedrock"},
+  {w:38,title:"Bedrock Knowledge Bases, Guardrails, CDK deploy",phase:"P15",del:"enterprise-ai-backend deployed on AWS"},
+  {w:39,title:"OpenAI: Assistants, Batch, fine-tune, Whisper, TTS",phase:"P16",del:"Voice assistant demo live"},
+  {w:40,title:"Claude: prompt caching, extended thinking, tools",phase:"P17",del:"claude-code-review-bot GitHub App live"},
+  {w:41,title:"Ollama, vLLM, local RAG stack, quantization",phase:"P18",del:"local-ai-stack Docker Compose on GitHub"},
+  {w:42,title:"Fine-tuning data prep, OpenAI fine-tune API",phase:"P19",del:"Custom classifier fine-tuned and evaluated"},
+  {w:43,title:"QLoRA, HuggingFace Trainer, PEFT, model card",phase:"P19",del:"domain-finetune-pipeline + HuggingFace model card"},
+  {w:44,title:"Knowledge graphs, Neo4j, GraphRAG pattern",phase:"P20",del:"knowledge-graph-rag on GitHub"},
+  {w:45,title:"Prompt injection, jailbreaks, PII, OWASP LLM Top 10",phase:"P21",del:"ai-security-toolkit open-sourced"},
+  {w:46,title:"OpenTelemetry, LangSmith, cost dashboards, alerts",phase:"P22",del:"ai-observability-stack with Terraform"},
+  {w:47,title:"Semantic caching, model routing, circuit breakers",phase:"P23",del:"Production caching + routing layer live"},
+  {w:48,title:"Auto-scaling, multi-region, full IaC, chaos test",phase:"P23",del:"production-ai-platform on AWS"},
+  {w:49,title:"AI system design framework, case studies, templates",phase:"P24",del:"2 system design documents completed"},
+  {w:50,title:"Mock interviews, design portfolio, GitHub polish",phase:"P24",del:"ai-system-design-portfolio on GitHub"},
+  {w:51,title:"Capstone Project 1: build, test, deploy, document",phase:"P25",del:"Capstone 1 live at a real URL"},
+  {w:52,title:"Capstone Project 2 + portfolio site + resume update",phase:"P25",del:"Portfolio site live + resume updated + 2 live apps"}
+];
+
+const PROJECTS_DATA = [
+  {n:1,name:"AI-Ready Backend Scaffold",phase:"Phase 1",desc:"Production Node.js service with SSE streaming, exponential backoff retries, token-bucket rate limiting, config validation, and AWS Secrets Manager integration. Every future project reuses this.",stack:["Node.js","Docker","AWS Lambda","API Gateway","Secrets Manager"]},
+  {n:2,name:"Python AI Microservice",phase:"Phase 2",desc:"FastAPI mirror of the Node.js scaffold. Streaming endpoints, retry logic, Pydantic validation, Docker containerization. Used as the Python base for all Python AI work.",stack:["Python","FastAPI","Pydantic","Docker","AWS Lambda"]},
+  {n:3,name:"ML Concept Explorer",phase:"Phase 3",desc:"Interactive Jupyter notebook explaining transformers with working code and visualizations. Published as a blog post — your first public content piece establishing expertise.",stack:["Python","Jupyter","HuggingFace","Matplotlib","dev.to"]},
+  {n:4,name:"LLM Playground API",phase:"Phase 4",desc:"Unified wrapper over OpenAI, Claude, and Gemini with token counting, per-call cost tracking, latency logging, and parameter control. Published as both npm and pip package.",stack:["Node.js","Python","OpenAI","Anthropic","Gemini","npm","PyPI"]},
+  {n:5,name:"Prompt Engineering Toolkit",phase:"Phase 5",desc:"CLI tool for versioning, testing, and A/B testing prompts with quality metrics. Includes 10 production-ready templates for common AI tasks.",stack:["Node.js","CLI","Git","JSON Schema","AWS Parameter Store"]},
+  {n:6,name:"Semantic Search Engine",phase:"Phase 6",desc:"Production document search with hybrid retrieval (BM25 + semantic), metadata filtering, cross-encoder reranking, and a REST API using pgvector on PostgreSQL.",stack:["Python","pgvector","PostgreSQL","FastAPI","AWS RDS","OpenSearch"]},
+  {n:7,name:"Production RAG System",phase:"Phase 7",desc:"Complete document Q&A over a real corpus. Advanced RAG with query rewriting, HyDE, reranking. Includes RAGAS evaluation dashboard, latency monitoring, and cost tracking. The flagship portfolio piece.",stack:["Python","LangChain","RAGAS","OpenSearch","AWS Bedrock","CloudWatch"]},
+  {n:8,name:"AI Framework Layer",phase:"Phase 8",desc:"Thin abstraction over LangChain and LlamaIndex with LangSmith tracing, comprehensive error handling, and benchmarks showing framework overhead vs raw API calls.",stack:["Python","LangChain","LlamaIndex","LangSmith","pytest"]},
+  {n:9,name:"Autonomous Research Agent",phase:"Phase 9",desc:"Agent that answers research questions by searching the web, reading documents, and producing structured reports. Full OpenTelemetry tracing, human approval gates, cost limits.",stack:["Python","ReAct","OpenTelemetry","DynamoDB","Lambda","Bedrock"]},
+  {n:10,name:"AI Software Dev Team",phase:"Phase 10",desc:"Multi-agent system: PM planner + developer + code reviewer + QA tester. Takes a feature spec and produces working, tested code using LangGraph for stateful orchestration.",stack:["Python","LangGraph","CrewAI","Multiple LLMs","GitHub API"]},
+  {n:11,name:"Production MCP Server",phase:"Phase 11",desc:"Fully authenticated MCP server exposing vector DB, file storage, and internal APIs to any MCP-compatible LLM client. Published to npm, tested with Claude Desktop.",stack:["Node.js","MCP SDK","AWS Lambda","Cognito","API Gateway"]},
+  {n:12,name:"AI Data Extraction Pipeline",phase:"Phase 12",desc:"Extracts structured data from PDFs, emails, and HTML into a database with 95%+ accuracy. Includes Pydantic validation, human review queue, confidence scoring, and Textract pre-processing.",stack:["Python","Instructor","Pydantic","Textract","EventBridge","RDS"]},
+  {n:13,name:"AI Evaluation Dashboard",phase:"Phase 13",desc:"Automated eval pipeline triggered on every prompt or code change. Tracks quality metrics over time and alerts on regressions. Integrated with GitHub Actions CI/CD.",stack:["Python","RAGAS","Braintrust","CloudWatch","GitHub Actions","S3"]},
+  {n:14,name:"AI Testing Framework",phase:"Phase 14",desc:"Complete open-source testing toolkit: mocked unit tests, behavioral tests, 20 adversarial prompt tests, Locust load tests, and full CI/CD integration. Reusable across all projects.",stack:["Python","pytest","Locust","GitHub Actions","CodeBuild"]},
+  {n:15,name:"Enterprise AI Backend",phase:"Phase 15",desc:"Production Bedrock deployment with multi-model support, Guardrails for content filtering, Knowledge Bases for RAG, cost monitoring dashboard, and automatic provider fallback.",stack:["Python","AWS Bedrock","CDK","CloudWatch","WAF","VPC"]},
+  {n:16,name:"Claude Code Review Bot",phase:"Phase 17",desc:"GitHub App that reviews pull requests using Claude Sonnet with extended thinking. Uses prompt caching for repo context to reduce cost by up to 90%.",stack:["Node.js","Claude API","GitHub API","Lambda","Bedrock","Webhooks"]},
+  {n:17,name:"Local AI Stack",phase:"Phase 18",desc:"Docker Compose setup for fully air-gapped AI: Llama 3.1 via Ollama, nomic-embed for embeddings, and pgvector for vector search. Swap-compatible with cloud APIs via env var.",stack:["Docker","Ollama","vLLM","pgvector","Nginx","Compose"]},
+  {n:18,name:"AI Security Toolkit",phase:"Phase 21",desc:"Open-source automated security test suite for LLM applications. Tests prompt injection, jailbreaks, PII leakage, and rate limit bypass. Integrates with Bedrock Guardrails.",stack:["Python","FastAPI","Bedrock Guardrails","WAF","CloudTrail"]},
+  {n:19,name:"AI Observability Stack",phase:"Phase 22",desc:"Full monitoring, logging, and alerting system for AI applications. Tracks cost, latency P99, quality metrics, and errors across all LLM calls. Complete Terraform IaC.",stack:["OpenTelemetry","LangSmith","CloudWatch","Managed Grafana","Terraform"]},
+  {n:20,name:"Production AI Platform",phase:"Phase 23",desc:"The platform all other projects run on: semantic caching, model routing by complexity, circuit breakers, ECS auto-scaling, multi-region with Route53, and full CI/CD. Complete IaC.",stack:["AWS ECS Fargate","ElastiCache Redis","SQS","Route53","Terraform","CDK"]}
+];
+
+const CHECKLIST_DATA = [
+  {cat:"Core LLM",text:"Call OpenAI, Claude, Gemini, and Bedrock APIs"},
+  {cat:"Core LLM",text:"Implement streaming SSE responses end-to-end"},
+  {cat:"Core LLM",text:"Track tokens and cost on every single LLM call"},
+  {cat:"Core LLM",text:"Handle rate limits, retries, and 429 errors gracefully"},
+  {cat:"Prompting",text:"Write zero-shot, few-shot, and chain-of-thought prompts"},
+  {cat:"Prompting",text:"Version-control and A/B test prompts with metrics"},
+  {cat:"Prompting",text:"Design production system prompts with guardrails"},
+  {cat:"Prompting",text:"Engineer prompts for reliable structured JSON output"},
+  {cat:"Embeddings",text:"Embed, chunk, and index documents for retrieval"},
+  {cat:"Embeddings",text:"Use pgvector and Pinecone in production systems"},
+  {cat:"Embeddings",text:"Implement hybrid search (BM25 + semantic vector)"},
+  {cat:"Embeddings",text:"Apply cross-encoder reranking to improve retrieval quality"},
+  {cat:"RAG",text:"Build advanced RAG with query rewriting and reranking"},
+  {cat:"RAG",text:"Evaluate RAG with RAGAS metrics"},
+  {cat:"RAG",text:"Use Bedrock Knowledge Bases for managed RAG"},
+  {cat:"RAG",text:"Implement GraphRAG for multi-hop queries"},
+  {cat:"Agents",text:"Build ReAct agents from scratch without frameworks"},
+  {cat:"Agents",text:"Design and implement custom tools for agents"},
+  {cat:"Agents",text:"Build multi-agent pipelines with LangGraph"},
+  {cat:"Agents",text:"Add human-in-the-loop approval for irreversible actions"},
+  {cat:"MCP",text:"Build and host an authenticated MCP server"},
+  {cat:"MCP",text:"Publish an MCP server to npm and test with Claude Desktop"},
+  {cat:"Frameworks",text:"Use LangChain LCEL for production pipelines"},
+  {cat:"Frameworks",text:"Use LlamaIndex for complex data ingestion"},
+  {cat:"Frameworks",text:"Set up LangSmith tracing for all LLM calls"},
+  {cat:"Evaluation",text:"Build automated eval pipelines as code"},
+  {cat:"Evaluation",text:"Create and maintain golden datasets for regression testing"},
+  {cat:"Testing",text:"Mock LLM calls in unit tests for deterministic testing"},
+  {cat:"Testing",text:"Run adversarial and red-team tests before every launch"},
+  {cat:"AWS",text:"Deploy production AI on AWS Bedrock"},
+  {cat:"AWS",text:"Use SageMaker for fine-tuning and training jobs"},
+  {cat:"AWS",text:"Architect VPC-private AI deployments with proper IAM"},
+  {cat:"Production",text:"Implement semantic caching to reduce LLM costs"},
+  {cat:"Production",text:"Build model routing by query complexity"},
+  {cat:"Production",text:"Set up circuit breakers for LLM provider outages"},
+  {cat:"Observability",text:"Add OpenTelemetry tracing to all LLM calls"},
+  {cat:"Observability",text:"Build cost and quality dashboards in CloudWatch"},
+  {cat:"Security",text:"Detect and block prompt injection attacks"},
+  {cat:"Security",text:"Implement PII detection and redaction in pipelines"}
+];
+
+const INTERVIEW_DATA = [
+  {level:"Junior (Month 1–4)", items:[
+    {q:"What is the difference between GPT-4o and Claude Sonnet?",a:"Focus on: context window (Claude 200K vs GPT-4o 128K), pricing differences, benchmark performance on coding vs reasoning tasks, and when each excels. Always test both on your specific use case."},
+    {q:"Explain how RAG works to a non-technical product manager.",a:"Analogy: RAG is like giving the AI a search engine and the most relevant textbook pages before asking it a question. Instead of answering from memory, it answers from real retrieved data — so it's accurate and up-to-date."},
+    {q:"What causes LLM hallucinations and how do you reduce them?",a:"Causes: LLMs predict probable tokens, not facts. They fill gaps with plausible-sounding but incorrect content. Mitigations: RAG (ground answers in real docs), structured output validation, temperature reduction, explicit 'say I don't know' instructions, and fact-checking tool calls."},
+    {q:"How do you count tokens and estimate LLM API cost before building a feature?",a:"Use tiktoken (OpenAI) or anthropic tokenizer to count input tokens. Multiply by input price per 1M tokens. Estimate average output length, multiply by output price. Then multiply by expected RPM × minutes/day for monthly cost."}
+  ]},
+  {level:"Mid-level (Month 5–8)", items:[
+    {q:"How would you evaluate a RAG system in production?",a:"Measure retrieval separately from generation. Retrieval: context precision (is retrieved context relevant?) and context recall (did you retrieve all needed info?). Generation: faithfulness (does answer stick to context?) and answer relevance (does it answer the question?). Use RAGAS for automated scoring."},
+    {q:"Your LLM API costs doubled this month. Walk me through your investigation.",a:"Check: (1) token usage per call — did prompts get larger? (2) new features using expensive models? (3) cache hit rate dropped? (4) retries spiking? (5) are you using Batch API for eligible offline jobs? (6) are you sending redundant context? Build a cost-per-request dashboard before anything else."},
+    {q:"When would you choose fine-tuning over RAG?",a:"Fine-tuning: when you need consistent style/format/tone, when the task is classification with known categories, when you need the model to follow complex rules consistently, and when inference latency matters (fine-tuned smaller models beat RAG + large model). RAG: when knowledge changes frequently, when you need source citations, and when you have <1000 training examples."},
+    {q:"What is the ReAct agent pattern and why does it work?",a:"ReAct alternates between Reasoning (Thought: what do I know, what do I need) and Acting (Action: which tool, with what input). The key insight: making the model write out its reasoning before acting dramatically improves reliability. The Observation from the tool grounds the next reasoning step in real data."}
+  ]},
+  {level:"Senior (Month 9–12)", items:[
+    {q:"Design a document intelligence platform for 10 million documents.",a:"Ingestion: async SQS queue + Lambda workers for parallel processing. Chunking strategy depends on doc type. Embedding: batch jobs on SageMaker. Storage: pgvector/OpenSearch with metadata. Serving: RAG API with semantic cache, reranking, citation tracking. Cost: ~$0.001 per document to embed, ~$0.01 per query. Total infra ~$2K/month at 100K daily queries."},
+    {q:"How do you prevent prompt injection in an AI agent with tool access?",a:"Defense-in-depth: (1) Strict separation between system context and user input in prompt structure. (2) Input classification — detect injection attempts before processing. (3) Tool call validation — verify tool name/params against allowed schema. (4) Output scanning — check responses for unexpected commands. (5) Principle of least privilege — don't give agents tools they don't need for the current task. (6) Human approval for all irreversible actions (delete, send, pay)."},
+    {q:"How do you design an AI system for 99.9% uptime?",a:"Multi-region active-active with Route53 health checks. Circuit breakers on all LLM provider calls with automatic failover. Semantic cache reduces LLM dependency (cache hit rate 40-70%). Async queue for non-real-time work. Graceful degradation: if primary LLM fails, serve cached/fallback response, not an error. Chaos engineering monthly to validate failover paths."}
+  ]},
+  {level:"System Design", items:[
+    {q:"Design GitHub Copilot's code completion backend.",a:"Requirements: P99 latency < 300ms, 1M+ active developers, streaming token-by-token. Architecture: sliding context window from editor (last 2K tokens), fast model (GPT-4o-mini) for most completions, semantic cache on common code patterns (huge hit rate for boilerplate), multi-region with sub-100ms routing, streaming SSE to IDE plugin. Key challenge: prefill context fast before user pauses typing."},
+    {q:"Design a multi-tenant AI platform for B2B SaaS.",a:"Each tenant gets: isolated prompt namespace, separate vector DB collection (or namespace), per-tenant rate limits and cost tracking, data isolation (no cross-tenant retrieval). Shared: LLM API pool with cost allocation, embedding pipeline, monitoring stack. Billing: per-token or per-request with markup. Key challenge: tenant isolation at the vector DB and LLM call level."}
+  ]}
+];
+
+// ═══════════════════════════════════════════════════════
+// RENDER FUNCTIONS
+// ═══════════════════════════════════════════════════════
+
+function renderPhases() {
+  const grid = document.getElementById('phase-grid');
+  grid.innerHTML = PHASES.map(p => {
+    const [bg, tc] = p.colors;
+    return `
+      <div class="phase-card" id="pc${p.id}">
+        <div class="phase-card-top" onclick="togglePhase(${p.id})">
+          <div class="phase-num" style="background:${bg};color:${tc}">${p.id}</div>
+          <div class="phase-info">
+            <div class="phase-title">${p.title}</div>
+            <div class="phase-meta">Weeks ${p.weeks} · Prereq: ${p.prereq}</div>
+          </div>
+          <div class="chevron">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="score-row">
+          <span class="score-pill">Importance <b>${p.importance}/10</b></span>
+          <span class="score-pill">Industry Demand <b>${p.demand}/10</b></span>
+          <span class="score-pill">Difficulty <b>${p.difficulty}/10</b></span>
+        </div>
+        <div class="phase-detail">
+          <div class="detail-block">
+            <div class="detail-label">Why this phase matters</div>
+            <div class="why-box">${p.why}</div>
+          </div>
+          ${p.arch ? `<div class="detail-block"><div class="detail-label">Architecture</div><div class="arch-box">${p.arch}</div></div>` : ''}
+          ${p.math ? `<div class="detail-block"><div class="detail-label">Required math (practical)</div><div class="arch-box">${p.math}</div></div>` : ''}
+          <div class="detail-block">
+            <div class="detail-label">Topics (${p.topics.length})</div>
+            <ul class="detail-list">${p.topics.map(t => `<li>${t}</li>`).join('')}</ul>
+          </div>
+          <div class="detail-block">
+            <div class="detail-label">Hands-on exercises</div>
+            <ul class="detail-list">${p.exercises.map(e => `<li>${e}</li>`).join('')}</ul>
+          </div>
+          <div class="detail-block">
+            <div class="detail-label">Mini project</div>
+            <div class="project-box">${p.project}</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-label">Deliverable</div>
+            <div class="deliverable-box">✓ ${p.deliverable}</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-label">AWS services</div>
+            <div class="tag-row">${p.aws.map(a => `<span class="tag aws">${a}</span>`).join('')}</div>
+          </div>
+          <div class="detail-block">
+            <div class="detail-label">Interview questions</div>
+            <ul class="detail-list">${p.interview.map(q => `<li>${q}</li>`).join('')}</ul>
+          </div>
+          <div class="detail-block">
+            <div class="detail-label">Common mistakes to avoid</div>
+            <ul class="detail-list">${p.mistakes.map(m => `<li>${m}</li>`).join('')}</ul>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function togglePhase(id) {
+  const card = document.getElementById('pc' + id);
+  card.classList.toggle('open');
+}
+
+function renderWeekly() {
+  // Build month filter
+  const filterEl = document.getElementById('month-filter');
+  const listEl = document.getElementById('week-list');
+  
+  filterEl.innerHTML = '<button class="mf-btn active" onclick="filterWeeks(0, this)">All 52 weeks</button>' +
+    Array.from({length:12}, (_,i) => `<button class="mf-btn" onclick="filterWeeks(${i+1}, this)">Month ${i+1}</button>`).join('');
+
+  window.filterWeeks = function(month, btn) {
+    document.querySelectorAll('.mf-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const data = month === 0 ? WEEKS_DATA : WEEKS_DATA.filter(w => Math.ceil(w.w / 4.33) === month || (month === 12 && w.w >= 49));
+    listEl.innerHTML = data.map(w => `
+      <div class="week-row">
+        <div class="wk-num">Week ${w.w}</div>
+        <div>
+          <div class="wk-title">${w.title}</div>
+          <div class="wk-del">✓ ${w.del}</div>
+        </div>
+        <div class="wk-phase">${w.phase}</div>
+      </div>
+    `).join('');
+  };
+  window.filterWeeks(0, filterEl.querySelector('.mf-btn'));
+}
+
+function renderProjects() {
+  document.getElementById('proj-grid').innerHTML = PROJECTS_DATA.map(p => `
+    <div class="proj-card">
+      <div class="proj-header">
+        <div class="proj-n">${p.n}</div>
+        <div>
+          <div class="proj-name">${p.name}</div>
+          <div class="proj-phase">${p.phase}</div>
+        </div>
+      </div>
+      <div class="proj-desc">${p.desc}</div>
+      <div class="tag-row">${p.stack.map(s => `<span class="tag">${s}</span>`).join('')}</div>
+    </div>
+  `).join('');
+}
+
+function renderChecklist() {
+  const saved = JSON.parse(localStorage.getItem('ai-checklist') || '{}');
+  const grid = document.getElementById('check-grid');
+  grid.innerHTML = CHECKLIST_DATA.map((c, i) => `
+    <div class="check-item ${saved[i] ? 'checked' : ''}" onclick="toggleCheck(${i}, this)">
+      <div class="check-box">${saved[i] ? '✓' : ''}</div>
+      <div>
+        <div class="check-text">${c.text}</div>
+        <div class="check-cat">${c.cat}</div>
+      </div>
+    </div>
+  `).join('');
+  updateProgress();
+}
+
+window.toggleCheck = function(i, el) {
+  const saved = JSON.parse(localStorage.getItem('ai-checklist') || '{}');
+  saved[i] = !saved[i];
+  localStorage.setItem('ai-checklist', JSON.stringify(saved));
+  el.classList.toggle('checked', saved[i]);
+  el.querySelector('.check-box').textContent = saved[i] ? '✓' : '';
+  updateProgress();
+};
+
+function updateProgress() {
+  const saved = JSON.parse(localStorage.getItem('ai-checklist') || '{}');
+  const done = Object.values(saved).filter(Boolean).length;
+  const total = CHECKLIST_DATA.length;
+  const pct = Math.round(done / total * 100);
+  document.getElementById('prog-label').textContent = `${done} of ${total} skills complete`;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-count').textContent = pct + '%';
+}
+
+window.resetChecklist = function() {
+  localStorage.removeItem('ai-checklist');
+  renderChecklist();
+};
+
+function renderInterview() {
+  document.getElementById('interview-content').innerHTML = INTERVIEW_DATA.map(section => `
+    <div class="interview-section">
+      <div class="interview-level">${section.level}</div>
+      ${section.items.map((item, i) => `
+        <div class="interview-qa">
+          <div class="iq" onclick="toggleIQ(this)">
+            <span>${item.q}</span>
+            <span class="iq-chevron">▼</span>
+          </div>
+          <div class="ia">${item.a}</div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+window.toggleIQ = function(el) {
+  const ia = el.nextElementSibling;
+  el.classList.toggle('open');
+  ia.classList.toggle('open');
+};
+
+function renderPortfolio() {
+  document.getElementById('portfolio-content').innerHTML = `
+    <div class="card">
+      <h3>GitHub profile — what to pin (in order)</h3>
+      <p>Your pinned repos tell a hiring manager your story in 30 seconds. Pin them in this exact order:</p>
+      <ul>
+        <li><strong>production-ai-platform</strong> — shows infrastructure and production thinking</li>
+        <li><strong>production-rag-system</strong> — your flagship AI project with eval dashboard</li>
+        <li><strong>autonomous-research-agent</strong> — shows agent development skills</li>
+        <li><strong>ai-security-toolkit</strong> — shows security awareness (rare in AI candidates)</li>
+        <li>One of your capstone projects with a live URL</li>
+        <li>An open source contribution or your most-starred repo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>README template for every repo</h3>
+      <p>Every single repo needs: (1) One-sentence description of what it does. (2) Architecture diagram (even ASCII). (3) Quick-start in under 5 commands. (4) Link to live demo or deployed URL. (5) "What I learned" section. Recruiters decide in under 10 seconds — make it obvious what you built and why it matters.</p>
+    </div>
+    <div class="card">
+      <h3>Portfolio site — yourname.dev</h3>
+      <p>Build and launch by Week 40. Stack: Next.js + Tailwind deployed on Vercel. Three sections only:</p>
+      <ul>
+        <li><strong>Projects</strong> — 5–6 projects with live URLs, 1-sentence description, and tech stack</li>
+        <li><strong>Writing</strong> — your 12 blog posts (one per month of learning)</li>
+        <li><strong>Contact</strong> — email and LinkedIn only</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Technical writing (1 post per month)</h3>
+      <p>Publish on your blog, then cross-post to dev.to and LinkedIn. Topics that get the most reads:</p>
+      <ul>
+        <li>"What I learned building [specific AI system]" — narrative + code</li>
+        <li>"[Tool A] vs [Tool B] — a real benchmark with numbers"</li>
+        <li>"How I reduced LLM API costs by 60% with semantic caching"</li>
+        <li>"Building production RAG: what nobody tells you"</li>
+        <li>Deep dive on one phase you found hardest</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Resume — one page, AI-engineer-optimized</h3>
+      <p>Lead with: "AI Engineer — I design, build, and deploy production LLM systems." Skills section: list every tool from the skill checklist you've completed. Projects section: 3 projects max, each with one bullet on what it does, one on the technical challenge, one on the result (metric if possible). No more than 5 years of prior experience — recruiters care about what you can do now.</p>
+    </div>
+  `;
+}
+
+function renderCareer() {
+  document.getElementById('career-content').innerHTML = `
+    <div class="career-grid">
+      <div class="career-card">
+        <div class="career-track">Track A</div>
+        <div class="career-title">Freelancing</div>
+        <div class="career-desc">Start at Month 6 with RAG, prompting, and agents. First offer: "I'll add an AI feature to your existing product." Starting rate: $75–120/hr. Package offer: "AI readiness audit + implementation for $2,500." Month 6–12 target: 2–3 paid projects while still learning. Best platforms: Upwork, direct LinkedIn outreach, and referrals from your network.</div>
+        <div class="career-pills">
+          <span class="career-pill">Start: Month 6</span>
+          <span class="career-pill">Target: $5K–15K in 6 months</span>
+          <span class="career-pill">Platform: Upwork + LinkedIn</span>
+        </div>
+      </div>
+      <div class="career-card">
+        <div class="career-track">Track B</div>
+        <div class="career-title">Full-time AI Role</div>
+        <div class="career-desc">By Month 9, you have: RAG, agents, Bedrock, fine-tuning, observability, and 15+ GitHub repos. Start applying at Month 9, target start date Month 11–12. Target roles: AI Engineer, LLM Engineer, ML Engineer (application), Backend AI Engineer. Interview prep: system design (use your portfolio), LeetCode Medium, AI-specific questions. Salary range: $140K–$200K+ (US), £70K–£120K (UK), ₹25–50L (India).</div>
+        <div class="career-pills">
+          <span class="career-pill">Apply: Month 9</span>
+          <span class="career-pill">Start: Month 11–12</span>
+          <span class="career-pill">Target: $150K–$200K US</span>
+        </div>
+      </div>
+      <div class="career-card">
+        <div class="career-track">Track C</div>
+        <div class="career-title">AI Startup</div>
+        <div class="career-desc">After Month 10, you can build a production AI product. Best opportunities: (1) Vertical AI tool — pick a specific industry (legal, medical, finance) and build specialized AI. (2) AI developer tooling — something you wish existed while learning this roadmap. (3) AI consulting — build and sell custom AI systems to SMBs at $10K–$50K per engagement. Framework: identify pain you experienced → 10 customer conversations → 4-week MVP → charge from day one.</div>
+        <div class="career-pills">
+          <span class="career-pill">Start: Month 10</span>
+          <span class="career-pill">MVP: 4 weeks</span>
+          <span class="career-pill">Goal: 10 paying customers</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Month-by-month milestones</h3>
+      <ul>
+        <li><strong>Month 1–2:</strong> Set up your GitHub, publish your first blog post, share your learning journey on LinkedIn</li>
+        <li><strong>Month 3–4:</strong> First 3 projects on GitHub with full READMEs, first 3 blog posts published</li>
+        <li><strong>Month 5–6:</strong> Production RAG system deployed with a real URL, first freelance inquiry or application</li>
+        <li><strong>Month 7–8:</strong> Agent projects live, LangSmith traces publicly shareable, 6 blog posts published</li>
+        <li><strong>Month 9:</strong> Start applying for full-time roles, portfolio site live, 15+ GitHub repos</li>
+        <li><strong>Month 10:</strong> Bedrock + fine-tuning done, first paid freelance project or startup idea validated</li>
+        <li><strong>Month 11:</strong> Security + observability complete, first interview offers coming in</li>
+        <li><strong>Month 12:</strong> 2 capstone projects live, resume updated, AI Engineer role secured or startup launched</li>
+      </ul>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════
+// TAB SWITCHING
+// ═══════════════════════════════════════════════════════
+
+window.switchTab = function(view, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('view-' + view).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 112, behavior: 'smooth' });
+};
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+
+renderPhases();
+renderWeekly();
+renderProjects();
+renderChecklist();
+renderInterview();
+renderPortfolio();
+renderCareer();
+</script>
+</body>
+</html>
